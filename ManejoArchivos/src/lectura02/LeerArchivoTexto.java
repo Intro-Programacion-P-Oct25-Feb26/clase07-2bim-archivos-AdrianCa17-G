@@ -21,6 +21,12 @@ public class LeerArchivoTexto {
 
             while (entrada.hasNext()) {
                 String linea = entrada.nextLine();
+                
+                /* Se usa doble backslash para identificar correctamente el separador
+                del pip y que espacie correctamente, es una funcion exclusiva de
+                java, no solo se le puede aplicar al pip, sino tambien a los demas
+                separadores como el . * espacios, tabuladores, cualquier separador*/
+                
                 List<String> lista = Arrays.asList(linea.split("\\|"));
                 ArrayList<String> linea_partes = new ArrayList<>(lista);
                 
