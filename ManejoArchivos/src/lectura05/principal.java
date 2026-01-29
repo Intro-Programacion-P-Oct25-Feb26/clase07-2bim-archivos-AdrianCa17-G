@@ -4,10 +4,16 @@
  */
 package lectura05;
 
+
+
 /**
  *
  * @author UTPL
  */
 public class principal {
+        public static void main(String args[]) {
+            int contadorEmpleados = estadistica.obtenerTotalEmpleados();
+            System.out.println(contadorEmpleados);
+        }
     
 }

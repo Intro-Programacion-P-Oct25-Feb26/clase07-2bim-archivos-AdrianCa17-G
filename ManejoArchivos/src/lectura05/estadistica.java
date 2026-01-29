@@ -16,34 +16,35 @@ import java.util.Scanner;
  */
 public class estadistica {
 
-    public static double obtenerPromedioEmpleados() {
-        double promedioEmpleados = 0;
-        int contador = 0;
+    public static int obtenerTotalEmpleados() {
+        int contadorEmpleados = 0;
 
         try {
             Scanner entrada = new Scanner(new File("data/sucursales.csv"));
-
-            while (entrada.hasNext()) {
+            while (entrada.hasNextLine()) {
                 String linea = entrada.nextLine();
-                List<String> lista = Arrays.asList(linea.split("\\|"));
-                ArrayList<String> linea_partes = new ArrayList<>(lista);
-                double x = Double.parseDouble(linea_partes.get(3));
-                promedioEmpleados = promedioEmpleados + x;
-                contador = contador + 1;
-                for (int i = 0; i < linea_partes.size(); i++) {
-                    System.out.println(linea_partes.get(i));
-                }
-                System.out.println("-----------------------------------");
 
-            } // fin de while
+                try {
+                    String[] partes = linea.split("\\|");
+
+                    if (partes.length < 3) {
+                        throw new Exception("Registro inválido");
+                    }
+
+                    int empleados = Integer.parseInt(partes[2]);
+                    contadorEmpleados = contadorEmpleados + empleados;
+
+                } catch (Exception e) {
+                }
+            }
+
+            entrada.close();
 
         } catch (Exception e) {
-            System.err.println("Error al leer del archivo.");
-            System.exit(1);
+            System.out.println("Error al abrir el archivo");
         }
-        promedioEmpleados = promedioEmpleados / contador;
-        return promedioEmpleados;
-    }
-    
-}
 
+        return contadorEmpleados;
+
+    }
+}
