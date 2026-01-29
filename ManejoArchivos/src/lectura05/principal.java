@@ -12,8 +12,8 @@ package lectura05;
  */
 public class principal {
         public static void main(String args[]) {
-            int contadorEmpleados = estadistica.obtenerTotalEmpleados();
-            System.out.println(contadorEmpleados);
+            double promedio = estadistica.obtenerTotalEmpleados();
+            System.out.printf("El promedio de empleados es de: %.2f\n", promedio);
         }
     
 }
